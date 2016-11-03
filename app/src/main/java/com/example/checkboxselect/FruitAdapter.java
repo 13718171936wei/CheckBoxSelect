@@ -24,9 +24,7 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
         resourceId = textViewResourceId;
     }
 
-
     CursorAdapter ca;
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
