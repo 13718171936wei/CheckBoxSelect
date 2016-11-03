@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -14,18 +13,24 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private List<Fruit> fruitList = new ArrayList<Fruit>();
     private FruitAdapter adapter;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initFruits();
+        initView();
+
+    }
+
+    private void initView() {
+        listView = (ListView) findViewById(R.id.list_view);
         adapter = new FruitAdapter(MainActivity.this,
                 R.layout.fruit_item, fruitList);
-        ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -42,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                     holder.cb.setChecked(true);
 
                 }
-
                 Toast.makeText(MainActivity.this, fruit.getName(),
                         Toast.LENGTH_SHORT).show();
             }
@@ -65,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    public void yinCang(View view) {
+        if(!adapter.isEmpty()){
+            fruitList.clear();
+        }
+        initFruits();
+        adapter.notifyDataSetChanged();
+    }
 
     private void initFruits() {
         Fruit apple = new Fruit("Apple", R.mipmap.ic_launcher);

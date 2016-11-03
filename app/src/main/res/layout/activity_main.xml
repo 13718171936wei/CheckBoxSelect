@@ -60,6 +60,22 @@
             android:text="反选"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="#f00000"
+            android:gravity="center"
+            android:onClick="yinCang"
+            android:paddingBottom="7dp"
+            android:paddingTop="7dp"
+            android:text="取消"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>
